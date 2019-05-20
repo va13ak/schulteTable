@@ -1,5 +1,27 @@
+html { 
+    background-color: #2b2e30;
+}
+
 .content {
     max-width: 560px;
     margin: auto;
     text-align: center;
-};
+}
+
+.cell {
+    background-color: white;
+    color: green;
+    font-weight: 200%;
+    width: 75px;
+    height: 75px;
+}
+
+#table {
+    height: 100%;
+    width: 100%;
+}
+
+#table_row {
+    display: flex;
+    flex-direction: row;
+}
