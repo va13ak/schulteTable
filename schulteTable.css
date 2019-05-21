@@ -25,3 +25,7 @@ html {
     display: flex;
     flex-direction: row;
 }
+
+#statistics {
+	color: white;
+}

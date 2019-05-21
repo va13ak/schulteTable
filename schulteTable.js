@@ -3,6 +3,8 @@ var colsCount = 5;
 var buttonSize = 40;
 var tableValues = new Array(rowsCount*colsCount);
 var currentNum;
+var timerId;
+var timer;
 
 initTableData();
 
@@ -28,13 +30,23 @@ $(function () {
         }
     );
 
+    $("#start").click(
+        function() {
+		startTimer();
+        }
+    );
+
     $(".cell").click(
         function() {
             var valuePosition = $(this).attr("id").substring(4);
             choosenNum = tableValues[valuePosition];
             if (choosenNum == (currentNum + 1)) {
-                currentNum++;
-                updateNextNum();
+		if (choosenNum == tableValues.length) {
+			stopTimer();
+		} else {
+	                currentNum++;
+        	        updateNextNum();
+		}
                 $(this).attr("style", "background-color: green;");
                 setTimeout(function(elem) {
                     elem.attr("style", "");
@@ -110,4 +122,18 @@ function updateCells() {
 
 function updateNextNum() {
     $("#next_num").text(currentNum + 1);
+}
+
+function startTimer() {
+	stopTimer();
+	timer = 0;
+        timerId = setInterval(function() {
+		timer += 100;
+		$("#timer").text((timer/1000).toFixed(1));
+	}, 100);
+}
+
+function stopTimer() {
+	if (timerId != undefined)
+		clearInterval(timerId);
 }
